@@ -61,6 +61,6 @@ reviewsColl = db[:reviews]
  #   end
 #
 #end 
-CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true)) do |csv|
+CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each { |row| p row }
 end
