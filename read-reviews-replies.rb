@@ -46,8 +46,10 @@ ARGF.lines do |row|
           PP::pp(row.encoding, $stderr)     
        # row = row.chomp.encode("UTF-8", "UTF-16")
         row = row.force_encoding(Encoding::UTF_16) if i == 0
-        row = row.force_encoding(Encoding::UTF_16) if i == 1
-
+        if i == 1
+          row = row.force_encoding(Encoding::UTF_8)
+          row = row.force_encoding(Encoding::UTF_16)
+        end
   PP::pp(row, $stderr)
           PP::pp(row[0], $stderr)
           PP::pp(row[-1..-1], $stderr)
