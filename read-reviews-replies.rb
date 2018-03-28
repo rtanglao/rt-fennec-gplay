@@ -41,6 +41,6 @@ reviewsColl = db[:reviews]
   # integers are strings
   # last field has a "\n" so use chomp to eliminate it?
 # CSV.foreach(ARGV[0]) do |row|
-ARGF.lines do |row|
-  PP::pp(row, $stderr)
+ARGF.lines do |line|
+  PP::pp(line, $stderr)
 end 
