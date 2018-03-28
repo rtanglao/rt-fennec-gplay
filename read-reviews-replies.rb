@@ -55,9 +55,9 @@ reviewsColl = db[:reviews]
 ##          PP::pp(row[-1..-1], $stderr)
 #        i += 1
 #        exit if i == 2
-        File.open(ARGV[0], "rb:UTF-16LE") do |file|
-  file.each do |line|
-    p line
-  end
+  File.open(ARGV[0], "rb:UTF-16LE") do |file|
+    file.each do |line|
+      p line
+    end
 
-# end 
+end 
