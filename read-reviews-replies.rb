@@ -34,3 +34,12 @@ end
 
 reviewsColl = db[:reviews]
 #questionsColl.indexes.create_one({ "id" => -1 }, :unique => true)
+CSV.new(ARGF.file, :headers => true).each do |row|
+  # string fields have quotation marks at the beginning and end
+  # in order to allow embedded commas, so have to remove them i guess?
+  # time fields are pacific time and in string format, need to convert to utc
+  # integers are strings
+  # last field has a "\n" so use chomp to eliminate it?
+ 
+  PP::pp(row, $stderr)
+end 
