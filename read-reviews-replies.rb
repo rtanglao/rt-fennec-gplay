@@ -42,7 +42,7 @@ reviewsColl = db[:reviews]
   # last field has a "\n" so use chomp to eliminate it?
 # CSV.foreach(ARGV[0]) do |row|
 ARGF.lines do |row|
-        row = row.encode("UTF-8", "UTF-16")
+        row = row.chomp.encode("UTF-8", "UTF-16")
   PP::pp(row, $stderr)
         exit
 end 
