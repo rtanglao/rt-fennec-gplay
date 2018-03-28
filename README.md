@@ -3,7 +3,8 @@ scripts for working with firefox for android google play reviews and replies
 
 ## 2018-03-28
 ## 2018-03-28 columnns of the spreadsheet
-**NOTE there is no OS version sad face **
+
+**NOTE there is no OS version sad face**
 
 ```
 
