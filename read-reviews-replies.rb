@@ -34,33 +34,6 @@ end
 
 reviewsColl = db[:reviews]
 #questionsColl.indexes.create_one({ "id" => -1 }, :unique => true)
-#CSV.new(ARGF.file, :headers => true).each do |row|
-  # string fields have quotation marks at the beginning and end
-  # in order to allow embedded commas, so have to remove them i guess?
-  # time fields are pacific time and in string format, need to convert to utc
-  # integers are strings
-  # last field has a "\n" so use chomp to eliminate it?
-        i = 0
-# CSV.foreach(ARGV[0]) do |row|
-#ARGF.lines do |row|
-#          PP::pp(row.encoding, $stderr)     
-#       # row = row.chomp.encode("UTF-8", "UTF-16")
-#        row = row.force_encoding(Encoding::UTF_16) if i == 0
-#        if i == 1
-#          row = row.force_encoding(Encoding::UTF_8)
-#          row = row.force_encoding(Encoding::UTF_16)
-#        end
-#  PP::pp(row, $stderr)
-#          PP::pp(row[0], $stderr)
-##          PP::pp(row[-1..-1], $stderr)
-#        i += 1
-#        exit if i == 2
-#  File.open(ARGV[0], "rb:UTF-16LE") do |file|
- #   file.each do |line|
- #     p line
- #   end
-#
-#end 
 CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each { |row| p row }
 end
