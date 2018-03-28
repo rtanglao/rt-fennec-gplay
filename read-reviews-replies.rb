@@ -43,7 +43,7 @@ reviewsColl = db[:reviews]
 # CSV.foreach(ARGV[0]) do |row|
 ARGF.lines do |row|
           PP::pp(row, $stderr)     
-        row = row.chomp.encode("UTF-8", "UTF-16")
-  PP::pp(row, $stderr)
+       # row = row.chomp.encode("UTF-8", "UTF-16")
+  #PP::pp(row, $stderr)
         exit
 end 
