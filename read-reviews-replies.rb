@@ -59,5 +59,5 @@ reviewsColl = db[:reviews]
   file.each do |line|
     p line
   end
-end
-end 
+
+# end 
