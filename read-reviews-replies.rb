@@ -45,7 +45,7 @@ reviewsColl = db[:reviews]
 ARGF.lines do |row|
           PP::pp(row.encoding, $stderr)     
        # row = row.chomp.encode("UTF-8", "UTF-16")
-        row = row.force_encoding(Encoding::UTF_16)
+        row = row.force_encoding(Encoding::UTF_16) if i == 0
   PP::pp(row, $stderr)
           PP::pp(row[0], $stderr)
           PP::pp(row[-1..-1], $stderr)
