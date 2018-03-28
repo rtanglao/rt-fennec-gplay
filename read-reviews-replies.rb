@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'pp'
+require 'awesome_print'
 require 'json'
 require 'time'
 require 'date'
@@ -35,5 +35,5 @@ end
 reviewsColl = db[:reviews]
 #questionsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
-  csv.each { |row| p row }
+  csv.each { |row| ap row }
 end
