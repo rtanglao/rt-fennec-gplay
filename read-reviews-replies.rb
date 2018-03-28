@@ -40,6 +40,7 @@ reviewsColl = db[:reviews]
   # time fields are pacific time and in string format, need to convert to utc
   # integers are strings
   # last field has a "\n" so use chomp to eliminate it?
+        i = 0
 # CSV.foreach(ARGV[0]) do |row|
 ARGF.lines do |row|
           PP::pp(row.encoding, $stderr)     
@@ -48,6 +49,6 @@ ARGF.lines do |row|
   PP::pp(row, $stderr)
           PP::pp(row[0], $stderr)
           PP::pp(row[-1..-1], $stderr)
-
-        exit
+        i += 1
+        exit if i == 2
 end 
