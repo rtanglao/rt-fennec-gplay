@@ -42,7 +42,7 @@ CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each do |row| 
     logger.debug row.ai 
     row["review_submitted_time"] = Time.at((row["Review Submit Millis Since Epoch"].to_i)/1000).utc
-    logger.debug row["Review Submit Millis Since Epoch"].to_i.ai
+    logger.debug row["Review Submit Millis Since Epoch"].ai
     logger.debug row["review_submitted_time"].ai
     pp row
   end
