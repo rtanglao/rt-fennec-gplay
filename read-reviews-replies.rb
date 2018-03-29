@@ -42,7 +42,7 @@ CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each do |row| 
         row = Hash(row)
     logger.debug row.ai 
-        puts row["Review Submit Millis Since Epoch"]
+        puts row["Review Submit Millis Since Epoch".to_sym]
         pp row
         exit
         logger.debug row["Review Submit Millis Since Epoch"].ai
