@@ -45,6 +45,7 @@ CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
         puts r1["Review Submit Millis Since Epoch".to_sym]
         pp r1
         pp r1[:"Review Link"]
+        pp r1["Device"]
         exit
         logger.debug row["Review Submit Millis Since Epoch"].ai
         t = row["Review Submit Millis Since Epoch"].to_i/1000
