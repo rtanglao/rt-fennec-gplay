@@ -51,9 +51,9 @@ CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
         x["Device"] = "lcsh92_wet_jb9"
         pp x
         puts "x class"
-        x.class
+        puts x.class
         puts "r1 class"
-        r1.class
+        puts r1.class
         exit
         logger.debug row["Review Submit Millis Since Epoch"].ai
         t = row["Review Submit Millis Since Epoch"].to_i/1000
