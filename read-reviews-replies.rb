@@ -7,6 +7,7 @@ require 'date'
 require 'mongo'
 require 'csv'
 require 'logger'
+require 'pp'
 
 # based on:
 # https://github.com/rtanglao/2016-rtgram/blob/master/backupPublicVancouverPhotosByDateTaken.rb
@@ -43,5 +44,6 @@ CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
     row["review_submitted_time"] = Time.at((row["Review Submit Millis Since Epoch"].to_i)/1000).utc
     logger.debug row["Review Submit Millis Since Epoch"].to_i/1000
     logger.debug row["review_submitted_time"].ai
+    pp row
   end
 end
