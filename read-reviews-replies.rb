@@ -40,6 +40,7 @@ reviewsColl = db[:reviews]
 reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each do |row| 
+        row = Hash(row)
     logger.debug row.ai 
         puts row["Review Submit Millis Since Epoch"]
         pp row
