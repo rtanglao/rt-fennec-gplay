@@ -43,11 +43,8 @@ CSV.open(ARGV[0], :headers => true) do |csv|
   csv.each do |row| 
         r1 = Hash(row)
     logger.debug r1.ai 
-        puts r1["Review Submit Millis Since Epoch".to_sym]
-        str="Review Submit Millis Since Epoch".force_encoding("utf-16")
-        pp r1[str]
         pp r1
-        pp r1[:"Review Link"]
+        pp r1["Review Link"]
         pp r1["Device"]
         puts "x"
         x = {}
