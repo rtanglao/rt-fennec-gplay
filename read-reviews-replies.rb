@@ -23,8 +23,8 @@ MONGO_PASSWORD = ENV["MONGO_PASSWORD"]
 # raise(StandardError,"Set Mongo user in ENV: 'MONGO_PASSWORD'") if !MONGO_PASSWORD
 FENNEC_GPLAY_DB = ENV["FENNEC_GPLAY_DB"]
 raise(StandardError,\
-      "Set Mongo instagram database name in ENV: 'FENNEC_GPLAY_DB'") \
-  if !FENNEC_GPLAY_DB
+      "Set Fennec gplay database name in ENV: 'FENNEC_GPLAY_DB'") \
+if !FENNEC_GPLAY_DB
 
 db = Mongo::Client.new([MONGO_HOST], :database => FENNEC_GPLAY_DB)
 if MONGO_USER
