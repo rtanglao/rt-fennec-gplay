@@ -33,7 +33,9 @@ if MONGO_USER
 end
 
 reviewsColl = db[:reviews]
-#questionsColl.indexes.create_one({ "id" => -1 }, :unique => true)
+reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
-  csv.each { |row| ap row }
+  csv.each do |row| 
+    logger.ap row
+  end
 end
