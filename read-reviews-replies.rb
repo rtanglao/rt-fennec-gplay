@@ -12,7 +12,7 @@ require 'logger'
 # https://github.com/rtanglao/2016-rtgram/blob/master/backupPublicVancouverPhotosByDateTaken.rb
 
 logger = Logger.new(STDERR)
-logger.level = Logger::DEBUG
+#logger.level = Logger::DEBUG
 MONGO_HOST = ENV["MONGO_HOST"]
 raise(StandardError,"Set Mongo hostname in ENV: 'MONGO_HOST'") if !MONGO_HOST
 MONGO_PORT = ENV["MONGO_PORT"]
