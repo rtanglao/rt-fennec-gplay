@@ -39,6 +39,6 @@ reviewsColl = db[:reviews]
 reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each do |row| 
-    logger.debug.ap(row)
+    logger.ap(row)
   end
 end
