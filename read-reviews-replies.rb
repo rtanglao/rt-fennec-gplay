@@ -41,6 +41,7 @@ reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], 'rb:bom|utf-16', :headers => true) do |csv|
   csv.each do |row| 
     logger.debug row.ai 
+        logger.debug row["Review Submit Millis Since Epoch"].ai
         t = row["Review Submit Millis Since Epoch"].to_i/1000
         logger.debug t.ai
     row["review_submitted_time"] = Time.at(t).utc
