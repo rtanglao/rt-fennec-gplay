@@ -49,7 +49,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     logger.debug r1.ai 
     r1["review_submitted_time"] = calc_mongo_time_from_string_milliseconds(r1["Review Submit Millis Since Epoch"])
     r1["review_last_updated_time"] = calc_mongo_time_from_string_milliseconds(r1["Review Last Update Millis Since Epoch"])   
-    r1["Developer Reply Millis Since Epoch"] = calc_mongo_time_from_string_milliseconds(r1["Review Last Update Millis Since Epoch"])
+    r1["Developer Reply Millis Since Epoch"] = calc_mongo_time_from_string_milliseconds(r1["Developer Reply Millis Since Epoch"])
     logger.debug r1["Developer Reply Millis Since Epoch"].ai    
     logger.debug r1["review_submitted_time"].ai
     logger.debug r1["review_last_updated_time"].ai
