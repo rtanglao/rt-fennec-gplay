@@ -43,12 +43,13 @@ end
 
 reviewsColl = db[:reviews]
 reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
-CSV.open(ARGV[0], :headers => true) do |csv|      
-  csv.each do |row| 
-    r1 = Hash(row)
+CSV.open(ARGV[0], :headers => true) do |review_data|      
+  csv.each do |review_data| 
+    r1 = Hash(review_data)
     logger.debug r1.ai 
     r1["review_submitted_time"] = calc_mongo_time_from_string_milliseconds(r1["Review Submit Millis Since Epoch"])
     logger.debug r1["review_submitted_time"].ai
+        puts("nil Review Title") if r1["Review Title"].nil?
     exit
   end
 end
