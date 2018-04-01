@@ -36,16 +36,18 @@ if MONGO_USER
   end
 end
 
+def calc_mongo_time_from_string_milliseconds(string_milli)
+  t = string_milli.to_i/1000
+  return Time.at(t).utc
+end
+
 reviewsColl = db[:reviews]
 reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], :headers => true) do |csv|      
   csv.each do |row| 
     r1 = Hash(row)
     logger.debug r1.ai 
-    logger.debug row["Review Submit Millis Since Epoch"].ai
-    t = row["Review Submit Millis Since Epoch"].to_i/1000
-    logger.debug t.ai
-    r1["review_submitted_time"] = Time.at(t).utc
+    r1["review_submitted_time"] = calc_mongo_time_from_string_milliseconds(r1["Review Submit Millis Since Epoch"])
     logger.debug r1["review_submitted_time"].ai
     exit
   end
