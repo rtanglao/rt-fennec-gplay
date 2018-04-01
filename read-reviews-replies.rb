@@ -37,6 +37,7 @@ if MONGO_USER
 end
 
 def calc_mongo_time_from_string_milliseconds(string_milli)
+  return nil if string_milli.nil?
   t = string_milli.to_i/1000
   return Time.at(t).utc
 end
