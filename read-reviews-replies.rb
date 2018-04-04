@@ -66,6 +66,6 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     end
     firefox_version = firefox_version_array[0]
     r1["firefox_major_version"] = firefox_version.to_i if  !firefox_version.nil?
-    logger r1["firefox_major_version"].ai
+    logger.debug r1["firefox_major_version"].ai
   end
 end
