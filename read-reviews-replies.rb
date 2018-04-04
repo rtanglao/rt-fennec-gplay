@@ -54,8 +54,8 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     logger.debug r1["developer_last_updated_time"].ai    
     logger.debug r1["review_submitted_time"].ai
     logger.debug r1["review_last_updated_time"].ai
+    next if r1["App Version Name"].nil?
     firefox_version_array = r1["App Version Name"].split('.')
-    next if firefox_version_array.nil? 
     if !firefox_version_array.nil?
       logger.debug firefox_version_array[0].ai
     end
