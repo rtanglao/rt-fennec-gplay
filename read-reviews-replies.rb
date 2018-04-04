@@ -42,6 +42,11 @@ def calc_mongo_time_from_string_milliseconds(string_milli)
   return Time.at(t).utc
 end
 
+class String
+  def numeric?
+    Float(self) != nil rescue false
+  end
+end
 reviewsColl = db[:reviews]
 reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], :headers => true) do |rating_review_data|      
@@ -59,6 +64,8 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     if !firefox_version_array.nil?
       logger.debug firefox_version_array[0].ai
     end
-    
+    firefox_version = firefox_version_array[0]
+    r1["firefox_major_version"] = firefox_verson.to_i if  !firefox_version.nil?
+    logger r1["firefox_major_version"].ai
   end
 end
