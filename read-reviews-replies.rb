@@ -58,6 +58,6 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     if !firefox_version_array.nil?
           logger.debug firefox_version_array[0].ai
     end
-    exit
+    
   end
 end
