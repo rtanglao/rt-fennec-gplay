@@ -74,13 +74,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     review_link = r1["Review Link"]
     next if review_link.nil?
     index = review_link.index(review_id_key)
-    ap review_link[index + review_id_key.length..-1].chomp
-    #u=URI.parse(r1["Review Link"])
-    #ap u.query
-    #template = Addressable::Template.new("https://{host}{/segments*}/{?account,reviewid}")
-    #uri = Addressable::URI.parse(r1["Review Link"])
-    #ap template.extract(uri)
-   # uri = Addressable::URI.parse(r1["Review Link"])
-    #awesome_print uri.query_values
+    r1["id"] = ap review_link[index + review_id_key.length..-1].chomp
+    logger.debug r1["id"]
   end
 end
