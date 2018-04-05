@@ -71,10 +71,10 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     logger.debug r1["firefox_major_version"].ai
     r1["star_rating"] = r1["Star Rating"].to_i
     logger.debug r1["star_rating"].ai
-    review_link = r1["Review Link"].chomp
+    review_link = r1["Review Link"]
     next if review_link.nil?
     index = review_link.index(review_id_key)
-    ap review_link[index + review_id_key.length..-1]
+    ap review_link[index + review_id_key.length..-1].chomp
     #u=URI.parse(r1["Review Link"])
     #ap u.query
     #template = Addressable::Template.new("https://{host}{/segments*}/{?account,reviewid}")
