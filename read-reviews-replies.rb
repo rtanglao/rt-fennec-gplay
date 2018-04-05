@@ -8,9 +8,8 @@ require 'mongo'
 require 'csv'
 require 'logger'
 require 'pp'
-
-# based on:
-# https://github.com/rtanglao/2016-rtgram/blob/master/backupPublicVancouverPhotosByDateTaken.rb
+require 'addressable/uri'
+# based on:# https://github.com/rtanglao/2016-rtgram/blob/master/backupPublicVancouverPhotosByDateTaken.rb
 
 logger = Logger.new(STDERR)
 logger.level = Logger::DEBUG
@@ -69,5 +68,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     logger.debug r1["firefox_major_version"].ai
     r1["star_rating"] = r1["Star Rating"].to_i
     logger.debug r1["star_rating"].ai
+    uri = Addressable::URI.parse(r1["Review Link"])
+    awesome_print uri.query_values
   end
 end
