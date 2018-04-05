@@ -48,7 +48,9 @@ class String
   end
 end
 reviewsColl = db[:reviews]
-reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true)
+reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true) 
+review_id_key = '&reviewid='
+
 CSV.open(ARGV[0], :headers => true) do |rating_review_data|      
   rating_review_data.each do |rating_review| 
     r1 = Hash(rating_review)
@@ -69,9 +71,12 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     logger.debug r1["firefox_major_version"].ai
     r1["star_rating"] = r1["Star Rating"].to_i
     logger.debug r1["star_rating"].ai
-    next if r1["Review Link"].nil?
-    u=URI.parse(r1["Review Link"])
-    ap u.query
+    review_link = r1["Review Link"].chomp
+    next if review_link.nil?
+    index = review_link.index(review_id_key)
+    ap review_link[index + review_id_key.length..-1]
+    #u=URI.parse(r1["Review Link"])
+    #ap u.query
     #template = Addressable::Template.new("https://{host}{/segments*}/{?account,reviewid}")
     #uri = Addressable::URI.parse(r1["Review Link"])
     #ap template.extract(uri)
