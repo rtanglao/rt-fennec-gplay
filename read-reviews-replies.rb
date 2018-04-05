@@ -8,8 +8,6 @@ require 'mongo'
 require 'csv'
 require 'logger'
 require 'pp'
-require 'uri'
-#require 'addressable/template'
 # based on:# https://github.com/rtanglao/2016-rtgram/blob/master/backupPublicVancouverPhotosByDateTaken.rb
 
 logger = Logger.new(STDERR)
