@@ -68,6 +68,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     logger.debug r1["firefox_major_version"].ai
     r1["star_rating"] = r1["Star Rating"].to_i
     logger.debug r1["star_rating"].ai
+      next if r1["Review Link"].nil?
     uri = Addressable::URI.parse(r1["Review Link"])
     awesome_print uri.query_values
   end
