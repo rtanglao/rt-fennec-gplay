@@ -71,9 +71,9 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     if !review_link.nil?
       index = review_link.index(review_id_key)
       r1["id"] = review_link[index + review_id_key.length..-1].chomp
-      logger.debug r1.ai
     else
       logger.debug "review link is nil, id is nil"
     end
+    logger.debug r1.ai
   end
 end
