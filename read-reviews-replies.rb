@@ -59,20 +59,21 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     #logger.debug r1["developer_last_updated_time"].ai    
     #logger.debug r1["review_submitted_time"].ai
     #logger.debug r1["review_last_updated_time"].ai
-    next if r1["App Version Name"].nil?
-    firefox_version_array = r1["App Version Name"].split('.')
-    if !firefox_version_array.nil?
-      #logger.debug firefox_version_array[0].ai
+    if !r1["App Version Name"].nil?
+      firefox_version_array = r1["App Version Name"].split('.')
+      firefox_version = firefox_version_array[0]
+      r1["firefox_major_version"] = firefox_version.to_i if firefox_version.numeric?
     end
-    firefox_version = firefox_version_array[0]
-    r1["firefox_major_version"] = firefox_version.to_i if firefox_version.numeric?
     #logger.debug r1["firefox_major_version"].ai
     r1["star_rating"] = r1["Star Rating"].to_i
     #logger.debug r1["star_rating"].ai
     review_link = r1["Review Link"]
-    next if review_link.nil?
-    index = review_link.index(review_id_key)
-    r1["id"] = review_link[index + review_id_key.length..-1].chomp
-    logger.debug r1.ai
+    if !review_link.nil?
+      index = review_link.index(review_id_key)
+      r1["id"] = review_link[index + review_id_key.length..-1].chomp
+      logger.debug r1.ai
+    else
+      logger.debug "review link is nil, id is nil"
+    end
   end
 end
