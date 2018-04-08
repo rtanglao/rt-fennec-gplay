@@ -78,6 +78,6 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
           r1["Review Submit Millis Since Epoch"])        
     end
     logger.debug r1.ai
-    logger.debug reviewsColl.find({ 'id' => id }).update_one(r1, :upsert => true )
+    logger.debug reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).ai
   end
 end
