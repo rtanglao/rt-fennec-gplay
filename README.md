@@ -1,6 +1,14 @@
 # rt-fennec-gplay
 scripts for working with firefox for android google play reviews and replies
 
+## 2018-04-08
+
+```bash
+ ./read-reviews-replies.rb utf_8_reviews_reviews_org.mozilla.firefox_201801.csv 2>out.txt
+iconv -f UTF-16 -t UTF-8  supported_devices.csv >utf8_supported_devices.csv
+./synthetic_add_device_branding_marketing_model.rb utf8_supported_devices.csv
+```
+
 ## 2018-03-29
 ### 2018-03-29 convert from utf-16 to utf-8
 not sure why the file was in utf-16 (because i edited it in emacs on the windows side?)
