@@ -34,8 +34,6 @@ if MONGO_USER
 end
 
 reviewsColl = db[:reviews]
-reviewsColl.indexes.create_one({ "id" => -1 }, :unique => true) 
-review_id_key = '&reviewid='
 
 CSV.open(ARGV[0], :headers => true) do |device_branding_marketing_model_data|      
   device_branding_marketing_model_data.each do |dbmd| 
