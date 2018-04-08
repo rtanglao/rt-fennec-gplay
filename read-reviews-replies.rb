@@ -72,7 +72,9 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       index = review_link.index(review_id_key)
       r1["id"] = review_link[index + review_id_key.length..-1].chomp
     else
-      logger.debug "review link is nil, id is nil"
+      logger.debug "review link is nil, setting id to language+device+submitted_millis"
+        r1["id"] = Digest::SHA2.new(256).hexdigest(r1["Reviewer Language"] + r1["Device"] 
+          + r1["Review Submit Millis Since Epoch"])        
     end
     logger.debug r1.ai
   end
