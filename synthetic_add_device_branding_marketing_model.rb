@@ -39,7 +39,10 @@ devicesColl.indexes.create_one({ "id" => -1 }, :unique => true)
 CSV.open(ARGV[0], :headers => true) do |device_branding_marketing_model_data|      
   device_branding_marketing_model_data.each do |dbmd| 
     d1 = Hash(dbmd)
-    d1["id"] = Digest::SHA2.new(256).hexdigest(d1["Device"] + d1["Model"])
+    d1["id"] = Digest::SHA2.new(256).hexdigest(
+      d1["Retail Branding"] + d1["Marketing Name"] +     
+      d1["Device"] + d1["Model"])
+    d1["synthetic_branding_plus_marketing_name"] = d1["Retail Branding"] + d1["Marketing Name"]
     logger.debug d1.ai
     logger.debug devicesColl.find({ 'id' => d1["id"] }).update_one(d1, :upsert => true ).ai
   end
