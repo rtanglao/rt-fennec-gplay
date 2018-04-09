@@ -41,5 +41,6 @@ CSV.open(ARGV[0], :headers => true) do |device_branding_marketing_model_data|
     d1 = Hash(dbmd)
     d1["id"] = Digest::SHA2.new(256).hexdigest(d1["Device"] + d1["Model"])
     logger.debug d1.ai
+    logger.debug devicesColl.find({ 'id' => d1["id"] }).update_one(d1, :upsert => true ).ai
   end
 end
