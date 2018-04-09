@@ -33,11 +33,13 @@ if MONGO_USER
   end
 end
 
-reviewsColl = db[:reviews]
+devicesColl = db[:devices]
+devicesColl.indexes.create_one({ "id" => -1 }, :unique => true) 
 
 CSV.open(ARGV[0], :headers => true) do |device_branding_marketing_model_data|      
   device_branding_marketing_model_data.each do |dbmd| 
     d1 = Hash(dbmd)
+    d1["id"] = Digest::SHA2.new(256).hexdigest(d1["Device"] + d1["Model"])
     logger.debug d1.ai
   end
 end
