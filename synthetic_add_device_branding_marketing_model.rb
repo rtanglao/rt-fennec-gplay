@@ -47,9 +47,14 @@ CSV.open(ARGV[0], :headers => true) do |device_branding_marketing_model_data|
 
     d1["id"] = Digest::SHA2.new(256).hexdigest(id_hashstr)
     d1["synthetic_branding_plus_marketing_name"] = ""
-    d1["synthetic_branding_plus_marketing_name"] += d1["Retail Branding"] if !d1["Retail Branding"].nil?
-    d1["synthetic_branding_plus_marketing_name"] += d1["Marketing Name"] if !d1["Marketing Name"].nil?
-
+    d1["synthetic_branding_plus_marketing_name"] = d1["Retail Branding"] if !d1["Retail Branding"].nil?
+    if !d1["Marketing Name"].nil?
+      if d1["synthetic_branding_plus_marketing_name"].nil?
+        d1["synthetic_branding_plus_marketing_name"] = d1["Marketing Name"] 
+      else
+        d1["synthetic_branding_plus_marketing_name"] += d1["Marketing Name"] 
+      end
+    end
     logger.debug d1.ai
     logger.debug devicesColl.find({ 'id' => d1["id"] }).update_one(d1, :upsert => true ).ai
   end
