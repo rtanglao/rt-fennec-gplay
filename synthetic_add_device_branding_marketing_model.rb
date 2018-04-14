@@ -52,6 +52,7 @@ CSV.open(ARGV[0], :headers => true) do |device_branding_marketing_model_data|
       if d1["synthetic_branding_plus_marketing_name"].nil?
         d1["synthetic_branding_plus_marketing_name"] = d1["Marketing Name"] 
       else
+        d1["synthetic_branding_plus_marketing_name"] += " "
         d1["synthetic_branding_plus_marketing_name"] += d1["Marketing Name"] 
       end
     end
