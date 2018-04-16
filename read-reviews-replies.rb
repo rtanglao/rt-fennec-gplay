@@ -75,8 +75,25 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       r1["id"] = review_link[index + review_id_key.length..-1].chomp
     else
       logger.debug "Review Link is nil, setting id to language+device+submitted_millis"
-        r1["id"] = Digest::SHA2.new(256).hexdigest(r1["Reviewer Language"] + r1["Device"] + 
-          r1["Review Submit Millis Since Epoch"])        
+      id_str = ""
+      if !r1["Reviewer Language"].nil?
+        id_str = r1["Reviewer Language"]
+      end
+      if id_str.nil?
+          if !r1["Device"].nil?
+            id_str = r1["Device"]
+          else
+            id_str += r1["Device"]
+          end
+      end
+      if id_str.nil?
+          if !r1["Review Submit Millis Since Epoch"].nil?
+            id_str = r1["Review Submit Millis Since Epoch"]
+          else
+            id_str += r1["Review Submit Millis Since Epoch"]
+          end
+      end        
+      r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
     logger.debug r1.ai
     logger.debug reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).ai
