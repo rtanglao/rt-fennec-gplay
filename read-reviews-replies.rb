@@ -96,7 +96,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
     logger.debug r1.ai
-    result = Hash(reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).ai)
+    result = Hash(reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).ai))
     logger.debug result.ai
     exit
   end
