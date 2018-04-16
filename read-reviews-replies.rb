@@ -13,6 +13,7 @@ require 'digest'
 
 logger = Logger.new(STDERR)
 logger.level = Logger::DEBUG
+Mongo::Logger.logger.level = Logger::FATAL
 MONGO_HOST = ENV["MONGO_HOST"]
 raise(StandardError,"Set Mongo hostname in ENV: 'MONGO_HOST'") if !MONGO_HOST
 MONGO_PORT = ENV["MONGO_PORT"]
