@@ -71,8 +71,10 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     #logger.debug r1["star_rating"].ai
     review_link = r1["Review Link"]
     if !review_link.nil?
+      logger.debug "Review Link is NON NIL, calculating id"
       index = review_link.index(review_id_key)
       r1["id"] = review_link[index + review_id_key.length..-1].chomp
+      logger.debug "id from GPLAY is:" + r1["id"].ai
     else
       logger.debug "Review Link is nil, setting id to language+device+submitted_millis"
       id_str = ""
