@@ -101,7 +101,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     result = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true )
     nModified = nil
     result.each do |result_hash| 
-      { nModified = result_hash["nModified"] ; break } if result_hash.member("nModified")
+      { nModified = result_hash["nModified"] ; break } if result_hash.member?("nModified")
     end
     logger.debug "nModified: " + nModified.to_s
     logger.debug result.ai
