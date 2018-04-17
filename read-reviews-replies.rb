@@ -77,23 +77,16 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       logger.debug "id from GPLAY is:" + r1["id"].ai
     else
       logger.debug "Review Link is nil, setting id to language+device+submitted_millis"
-      id_str = ""
-      if !r1["Reviewer Language"].nil?
-        id_str = r1["Reviewer Language"]
+      id_str = !r1["Reviewer Language"].nil? ? r1["Reviewer Language"] : nil
+      if id_str.nil?
+        id_str =  r1["Device"] if !r1["Device"].nil?
+      else
+        id_str +=  r1["Device"] if !r1["Device"].nil? 
       end
       if id_str.nil?
-          if !r1["Device"].nil?
-            id_str = r1["Device"]
-          else
-            id_str += r1["Device"]
-          end
-      end
-      if id_str.nil?
-          if !r1["Review Submit Millis Since Epoch"].nil?
-            id_str = r1["Review Submit Millis Since Epoch"]
-          else
-            id_str += r1["Review Submit Millis Since Epoch"]
-          end
+        id_str =  r1["Review Submit Millis Since Epoch"] if !r1["Review Submit Millis Since Epoch"].nil?
+      else
+        id_str += r1["Review Submit Millis Since Epoch"]
       end        
       r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
