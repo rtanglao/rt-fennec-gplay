@@ -91,13 +91,16 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
     logger.debug r1.ai
-    result = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true )
-    nModified = nil
-    result.each do |result_hash| 
-      begin nModified = result_hash["nModified"] ; break end if result_hash.member?("nModified")
-    end
-    logger.debug "nModified: " + nModified.to_s
-    logger.debug result.ai
+    #result = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true )
+    #nModified = nil
+    #result.each do |result_hash| 
+    #  begin nModified = result_hash["nModified"] ; break end if result_hash.member?("nModified")
+    #end
+    #logger.debug "nModified: " + nModified.to_s
+    #logger.debug result.ai
+    @result = {}
+    reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).each { |row| id = row.delete('id'); @result["#{id}"] = row }
+    puts @result.inspect
     exit
   end
 end
