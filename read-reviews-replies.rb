@@ -101,6 +101,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     @result = {}
     reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).each { |row| id = row.delete('id'); @result["#{id}"] = row }
     puts @result.ai
+    puts @result["nModified"]
     exit
   end
 end
