@@ -94,7 +94,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     result_array = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).to_a
     nModified = result_array.find {|item| item.include?(:nModified)}
     #puts result[""]["nModified"]
-    ap result.to_a
+    ap nModified
     exit
   end
 end
