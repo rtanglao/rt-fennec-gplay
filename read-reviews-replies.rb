@@ -92,14 +92,16 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
     end
     logger.debug r1.ai
     result_array = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).to_a
-    ap result_array
     nModified = 0
     result_array.each do |item|
       nModified = item["nModified"] if item.include?("nModified") 
       break
     end
     #puts result[""]["nModified"]
-    ap nModified
-    exit
+    if nModified == 0
+      logger.debug "INSERTED^^"
+    else
+      logger.debug "UPDATED^^^^^^"
+    end
   end
 end
