@@ -2,6 +2,30 @@
 scripts for working with firefox for android google play reviews and replies
 
 ## 2018-04-19
+
+### 2018-04-19 English only, 1 and 2 star: Non replied to reviews November 14, 2017 - April 18, 2018 is: 3962
+
+* mongodb query:
+
+```js
+{"synthetic_developer_should_have_replied_but_did_not_reply" : true, 
+  "Review Last Update Date and Time": {$gte : "2017-11-14 00:00:00 UTC"},
+  "star_rating": { $lt : 3},
+  "Reviewer Language": "en"
+}
+```
+
+### 2018-04-19 1 and 2 star: Non replied to reviews November 14, 2017 - April 18, 2018 is: 13130
+
+* mongodb query:
+
+```js
+{"synthetic_developer_should_have_replied_but_did_not_reply" : true, 
+  "Review Last Update Date and Time": {$gte : "2017-11-14 00:00:00 UTC"},
+  "star_rating": { $lt : 3}
+}
+```
+
 ### 2018-04-19 Non replied to reviews November 14, 2017 - April 18, 2018 is: 45184
 
 * November 14, 2017 was the Firefox 57 for Android release date.
