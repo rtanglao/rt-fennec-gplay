@@ -2,15 +2,20 @@
 scripts for working with firefox for android google play reviews and replies
 
 ## 2018-04-19
-November 2017 non replied to reviews: 12487 
+### 2018-04-19 Non replied to reviews
+
+#### November 2017 non replied to reviews: 12487 
 
 ```js
 {"synthetic_developer_should_have_replied_but_did_not_reply" : true}
 ```
-12487 documents
+* 12487 documents
+
+#### December 2017 non replied to reviews = 22535 - 10048
+
+* same query as November returns 22535 documents
 
 ### 2018-04-19 117077-6= 117071 is the number of ratings (including with reviews and without reviews i.e. just star rating)
-
 
 ```bash
 rtanglao@roland-SURFACE-38263:~/GIT/rt-fennec-gplay$ wc -l utf8*april19*
