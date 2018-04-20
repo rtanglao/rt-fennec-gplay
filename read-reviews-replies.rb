@@ -87,8 +87,8 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       logger.debug "id_str:" + id_str
       r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
-    r1["synthetic_there_should_be_a_developer_reply"] = !r1["Review Link"].nil?
-    r1["synthetic_there_was_a_developer_reply"] = !r1["Developer Reply Text"].nil? 
+    r1["synthetic_developer_should_have_replied_but_did_not_reply"] = 
+      !r1["Review Link"].nil? && r1["Developer Reply Text"].nil? ? true : false
     logger.debug r1.ai
     result_array = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).to_a
     nModified = 0
