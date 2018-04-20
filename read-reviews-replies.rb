@@ -54,13 +54,9 @@ review_id_key = '&reviewid='
 CSV.open(ARGV[0], :headers => true) do |rating_review_data|      
   rating_review_data.each do |rating_review| 
     r1 = Hash(rating_review)
-    #logger.debug r1.ai 
     r1["review_submitted_time"] = calc_mongo_time_from_string_milliseconds(r1["Review Submit Millis Since Epoch"])
     r1["review_last_updated_time"] = calc_mongo_time_from_string_milliseconds(r1["Review Last Update Millis Since Epoch"])   
     r1["developer_last_updated_time"] = calc_mongo_time_from_string_milliseconds(r1["Developer Reply Millis Since Epoch"])
-    #logger.debug r1["developer_last_updated_time"].ai    
-    #logger.debug r1["review_submitted_time"].ai
-    #logger.debug r1["review_last_updated_time"].ai
     if !r1["App Version Name"].nil?
       firefox_version_array = r1["App Version Name"].split('.')
       firefox_version = firefox_version_array[0]
@@ -91,6 +87,7 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       logger.debug "id_str:" + id_str
       r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
+    r1["synthetic_developer_replied_to_review"] = !r1["Review Link].nil? && !r1["Developer Reply Text"].nil? ? true : false
     logger.debug r1.ai
     result_array = reviewsColl.find({ 'id' => r1["id"] }).update_one(r1, :upsert => true ).to_a
     nModified = 0
@@ -98,11 +95,10 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
       nModified = item["nModified"] if item.include?("nModified") 
       break
     end
-    #puts result[""]["nModified"]
     if nModified == 0
       logger.debug "INSERTED^^"
     else
       logger.debug "UPDATED^^^^^^"
-    end
+    end    
   end
 end
