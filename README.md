@@ -2,12 +2,14 @@
 scripts for working with firefox for android google play reviews and replies
 
 ## 2018-04-19
+### 2018-04-19 Non replied to reviews November 14, 2017 - April 18, 2018 is: 
+
+November 14, 2017 was the Firefox 57 for Android release date.
+
 ### 2018-04-19 Non replied to reviews November 1, 2017 - April 18, 2018 is 35705
 
-```3334  + 6529 + 6165 + 9629 = 10048 = 35705```
+* ```3334  + 6529 + 6165 + 9629 = 10048 = 35705```
 
-
-### 2018-04-19 Non replied to reviews November 1, 2017 - April 18, 2018 is 35705
 
 #### November 2017 non replied to reviews: 12487 
 
