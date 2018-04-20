@@ -1,6 +1,17 @@
 # rt-fennec-gplay
 scripts for working with firefox for android google play reviews and replies
 
+## 2018-04-19 refresh files from google play (stored on google drive for PPI reasons)
+
+```bash
+iconv -f UTF-16 -t UTF-8  nov-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201711.csv > utf8-nov-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201711.csv
+iconv -f UTF-16 -t UTF-8 dec-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201712.csv  > utf8-dec-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201712.csv
+iconv -f UTF-16 -t UTF-8 jan-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201801.csv  > utf8-jan-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201801.csv
+iconv -f UTF-16 -t UTF-8 feb-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201802.csv  > utf8-feb-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201802.csv
+iconv -f UTF-16 -t UTF-8 mar2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201803.csv  > utf8-mar-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201803.csv
+iconv -f UTF-16 -t UTF-8 apr-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201804.csv  > utf8-apr-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201804.csv
+```
+
 ## 2018-04-08
 
 ```bash
