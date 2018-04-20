@@ -6,14 +6,31 @@ scripts for working with firefox for android google play reviews and replies
 
 #### November 2017 non replied to reviews: 12487 
 
+```bash
+./read-reviews-replies.rb utf8-nov-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201711.csv\
+ 2>nov-2017-downloaded-19april2018_stderr.txt
+```
+
 ```js
 {"synthetic_developer_should_have_replied_but_did_not_reply" : true}
 ```
 * 12487 documents
 
-#### December 2017 non replied to reviews = 22535 - 10048
+#### December 2017 non replied to reviews = 22535 - 12487 = 10048
 
 * same query as November returns 22535 documents
+
+```bash
+./read-reviews-replies.rb utf8-dec-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201712.csv\
+ 2>dec-2017-downloaded-19april2018_stderr.txt
+```
+
+#### January 2018 non repied to reviews = 32164 - 22535 = 9629
+
+```bash
+ ./read-reviews-replies.rb utf8-jan-2018-downloaded-april192018-reviews_reviews_org\
+ .mozilla.firefox_201801.csv 2> jan-2018-downloaded-19april2018_stderr.txt
+``` 
 
 ### 2018-04-19 117077-6= 117071 is the number of ratings (including with reviews and without reviews i.e. just star rating)
 
