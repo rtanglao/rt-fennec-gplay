@@ -25,12 +25,21 @@ scripts for working with firefox for android google play reviews and replies
  2>dec-2017-downloaded-19april2018_stderr.txt
 ```
 
-#### January 2018 non repied to reviews = 32164 - 22535 = 9629
+#### January 2018 non replied to reviews = 32164 - 22535 = 9629
 
 ```bash
  ./read-reviews-replies.rb utf8-jan-2018-downloaded-april192018-reviews_reviews_org\
  .mozilla.firefox_201801.csv 2> jan-2018-downloaded-19april2018_stderr.txt
 ``` 
+
+#### February 2018 non replied to reviews = - 38329 - 32164 = 6165 
+
+```bash
+ ./read-reviews-replies.rb utf8-feb-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201802.csv  
+  2>feb-2018-downloaded-19april2018_stderr.txt
+```
+
+#### March 2018 non replied to reviews = -  - 38329 =  
 
 ### 2018-04-19 117077-6= 117071 is the number of ratings (including with reviews and without reviews i.e. just star rating)
 
