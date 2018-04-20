@@ -87,7 +87,8 @@ CSV.open(ARGV[0], :headers => true) do |rating_review_data|
         id_str =  r1["Review Submit Millis Since Epoch"] if !r1["Review Submit Millis Since Epoch"].nil?
       else
         id_str += r1["Review Submit Millis Since Epoch"] if !r1["Review Submit Millis Since Epoch"].nil?
-      end        
+      end 
+      logger.debug "id_str:" + id_str
       r1["id"] = Digest::SHA2.new(256).hexdigest(id_str)        
     end
     logger.debug r1.ai
