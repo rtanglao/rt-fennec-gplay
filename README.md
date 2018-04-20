@@ -1,7 +1,23 @@
 # rt-fennec-gplay
 scripts for working with firefox for android google play reviews and replies
 
-## 2018-04-19 refresh files from google play (stored on google drive for PPI reasons) which are utf16 and convert to utf8
+### 2018-04-19 117077-6= 117071 is the number of ratings (including with reviews and without reviews i.e. just star rating)
+
+```bash
+rtanglao@roland-SURFACE-38263:~/GIT/rt-fennec-gplay$ wc -l utf8*april19*
+```
+
+```
+    9238 utf8-apr-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201804.csv
+   22246 utf8-dec-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201712.csv
+   17014 utf8-feb-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201802.csv
+   22227 utf8-jan-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201801.csv
+   18201 utf8-mar-2018-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201803.csv
+   28151 utf8-nov-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201711.csv
+  117077 total
+```
+
+### 2018-04-19 refresh files from google play (stored on google drive for PPI reasons) which are utf16 and convert to utf8
 
 ```bash
 iconv -f UTF-16 -t UTF-8  nov-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201711.csv > utf8-nov-2017-downloaded-april192018-reviews_reviews_org.mozilla.firefox_201711.csv
