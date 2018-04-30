@@ -20,7 +20,7 @@ one_two_star_day <-
    count()
 ```
 
-Output
+#### 2018-04-29 Output:
 
 ```R
 > head(one_two_star_day)
@@ -34,6 +34,17 @@ Output
 4 2017-11-04      57
 5 2017-11-05      48
 6 2017-11-06      54
+```
+
+#### 2018-04-29 Plot:
+
+```R
+p = ggplot(
+  data =one_two_star_day,
+           aes(x=date_updated, y=n)) +
+  geom_line(stat = "identity")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_fill_brewer(palette = "Set1")
 ```
 
 ## 2018-04-22
