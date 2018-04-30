@@ -1,6 +1,41 @@
 # rt-fennec-gplay
 scripts for working with firefox for android google play reviews and replies
 
+## 2018-04-29
+### 2018-04-29 how to get counts
+
+```R
+library(tidyverse)
+reviews = read.csv("20april2018-01nov2017-18april2018-mongo-export-reviews.csv")
+one_and_two_star_reviews = reviews %>%
+filter(star_rating < 3)
+install.packages('padr')
+library(padr)
+one_and_two_star_with_date <- one_and_two_star_reviews %>%
+mutate(date_updated = as.Date(review_last_updated_time))
+
+one_two_star_day <-
+  one_and_two_star_with_date %>%
+  group_by(date_updated) %>%
+   count()
+```
+
+Output
+
+```R
+> head(one_two_star_day)
+# A tibble: 6 x 2
+# Groups:   date_updated [6]
+  date_updated     n
+  <date>       <int>
+1 2017-11-01      62
+2 2017-11-02      41
+3 2017-11-03      43
+4 2017-11-04      57
+5 2017-11-05      48
+6 2017-11-06      54
+```
+
 ## 2018-04-22
 
 ### 2018-04-22 some code for some plots
