@@ -23,5 +23,6 @@ gt10_device_plot = ggplot(
     breaks = function(x) unique(
       floor(pretty(seq(0, (max(x) + 1) * 1.1))))) +
   facet_wrap(~ Device)
-  # 4000 pixel wide plot is at:
-  # https://flic.kr/p/26Hdg9e
+# 4000 pixel wide plot is at:
+# https://flic.kr/p/26Hdg9e AND in this repo at 
+# https://github.com/rtanglao/rt-fennec-gplay/blob/master/30april2018-01nov2017-18april2018-1-and-2-star-greater-than-10-reviews-Rplot8.png
