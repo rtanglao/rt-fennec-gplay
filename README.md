@@ -1,6 +1,42 @@
 # rt-fennec-gplay
 scripts for working with firefox for android google play reviews and replies
 
+## 2018-04-30
+### 2018-04-30 30april2018-01nov2017-18april2018-1-and-2-star-greater-than-10-reviews
+
+```R
+library(tidyverse)
+reviews = read.csv("20april2018-01nov2017-18april2018-mongo-export-reviews.csv")
+one_and_two_star_reviews = reviews %>%
+gt10_one_and_two_star_reviews_nocount <- 
+  one_and_two_star_reviews %>% 
+  add_count(Device, sort = TRUE) %>% 
+  filter(n > 10) %>% 
+  select(-n)
+gt10_one_and_two_star_with_date <- 
+  gt10_one_and_two_star_reviews_nocount %>%
+  mutate(date_updated = as.Date(review_last_updated_time))
+gt10_device_one_two_star_day <-
+  gt10_one_and_two_star_with_date %>%
+  group_by(date_updated, Device) %>%
+  count()
+gt10_device_plot = ggplot(
+  data = gt10_device_one_two_star_day,
+  aes(x=date_updated, y=n)) +
+  geom_line(stat = "identity", colour="pink")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  scale_fill_brewer(palette = "Set1") + 
+  scale_y_continuous(
+    breaks = function(x) unique(
+      floor(pretty(seq(0, (max(x) + 1) * 1.1))))) +
+  facet_wrap(~ Device)
+```
+
+### 2018-04-30 Output
+
+<a data-flickr-embed="true"  href="https://www.flickr.com/photos/roland/41816845001/in/dateposted-public/" title="30april2018-01nov2017-18april2018-1-and-2-star-greater-than-10-reviews- Rplot08"><img src="https://farm1.staticflickr.com/905/41816845001_4fa53d2efe_n.jpg" width="320" height="213" alt="30april2018-01nov2017-18april2018-1-and-2-star-greater-than-10-reviews- Rplot08"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+
 ## 2018-04-29
 ### 2018-04-29 how to get counts
 
